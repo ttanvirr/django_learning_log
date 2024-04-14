@@ -1,0 +1,23 @@
+{% extends 'learning_logs/base.html' %}
+<!-- prettier-ignore -->
+{% load bootstrap5 %}
+
+{% block page_header %}
+<h1>Log in to your account.</h1>
+{% endblock page_header %}
+
+<!-- prettier-ignore -->
+{% block content %}
+
+<form action="{% url 'users:login' %}" method="post">
+    {% csrf_token %}
+    <!-- prettier-ignore -->
+    {% bootstrap_form form %}
+
+    {% buttons %}
+    <button type="submit" class="btn btn-primary">Log In</button>
+    {% endbuttons %}
+    <input type="hidden" name="next" value="{% url 'learning_logs:index' %}" />
+</form>
+
+{% endblock content %}

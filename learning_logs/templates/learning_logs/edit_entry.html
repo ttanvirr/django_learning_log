@@ -1,0 +1,28 @@
+{% extends 'learning_logs/base.html' %}
+<!-- prettier-ignore -->
+{% load bootstrap5 %}
+
+{% block page_header %}
+<h1>
+    Edit entry for
+    <a href="{% url 'learning_logs:topic' topic.id %}">{{ topic }}</a>
+</h1>
+{% endblock page_header %}
+
+<!-- prettier-ignore -->
+{% block content %}
+
+<form
+    action="{% url 'learning_logs:edit_entry' entry.id %}"
+    method="post"
+    class="form">
+    <!-- prettier-ignore -->
+    {% csrf_token %} 
+    {% bootstrap_form form %}
+
+    {% buttons %}
+    <button type="submit" class="btn btn-primary">Save changes</button>
+    {% endbuttons %}
+</form>
+
+{% endblock content %}
